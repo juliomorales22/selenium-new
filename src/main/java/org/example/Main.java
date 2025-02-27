@@ -20,12 +20,7 @@ public class Main {
         pastebinHomePage.acceptCookies();
         pastebinHomePage.enterPasteText("selenium java");
         assertThat(pastebinHomePage.getPasteText()).containsIgnoringCase("selenium");
-
-        //pastebinHomePage.selectPasteExpiration("10M"); //Si es necesario, implementa esto en el objeto de página
-
         pastebinHomePage.clickSubmit();
-
-        // Agrega más aserciones o acciones en la siguiente página si es necesario
         driver.quit(); // Cierra el navegador
     }
 }
