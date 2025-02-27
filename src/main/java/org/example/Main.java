@@ -16,9 +16,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver = new ChromeDriver();
         driver.get("https://pastebin.com/");
-
         PastebinHomePage pastebinHomePage = new PastebinHomePage(driver);
-
         pastebinHomePage.acceptCookies();
         pastebinHomePage.enterPasteText("selenium java");
         assertThat(pastebinHomePage.getPasteText()).containsIgnoringCase("selenium");

@@ -19,8 +19,6 @@ public  class PastebinHomePage {
     private WebElement selectExpiration;
     private WebElement submitButtonHtml;
 
-    //public PastebinHomePage(WebDriver driver) throws InterruptedException {
-        //Thread.sleep(5000);
       public PastebinHomePage(WebDriver driver){
         this.driver = driver;
         // explicit wait
