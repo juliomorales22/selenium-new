@@ -22,6 +22,7 @@ public  class CreartestHomePage {
     private WebElement submitButtonHtml;
     private WebElement selectCategoria;
     private WebElement checkAceptar;
+    private WebElement selectRespuesta1;
       public CreartestHomePage(WebDriver driver){
         this.driver = driver;
         // explicit wait
@@ -29,15 +30,18 @@ public  class CreartestHomePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@aria-label=\"Consent\"]")));
 
         agreeCookies = driver.findElement(By.xpath("//button[@aria-label=\"Consent\"]"));
-        selectCategoria = driver.findElement(By.name("Categoria"));
+          selectRespuesta1 = driver.findElement(By.xpath("//*[@value=\"9608273\"]"));
+       /* selectCategoria = driver.findElement(By.name("Categoria"));
 
         textTitulo = driver.findElement(By.name("titulo"));
         textDescripcion = driver.findElement(By.name("descripcion_test"));
         checkAceptar= driver.findElement(By.name("Aceptar"));
-        //selectExpiration = driver.findElement(By.id("postform-expiration"));
+        //selectExpiration = driver.findElement(By.id("postform-expiration"));*/
         //submitButtonHtml = driver.findElement(By.cssSelector("#w0 > div.post-form__bottom > div.post-form__left > div.form-group.form-btn-container > button"));
     }
-
+    public void selectFormRespuesta1(String value) {
+        selectRespuesta1.click();
+    }
     public void acceptCookies() {
         agreeCookies.click();
     }

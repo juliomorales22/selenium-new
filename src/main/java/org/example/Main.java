@@ -15,15 +15,16 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver = new ChromeDriver();
-        driver.get("https://www.creartest.com/creartest1.php");
+        driver.get("http://www.creartest.com/hacertests-279269-Basic_English_Quiz_Colors_Animals_and_School_Objects.php");
         CreartestHomePage creartestHomePage = new CreartestHomePage(driver);
         creartestHomePage.acceptCookies();
-        creartestHomePage.selectFormCategoria("2");
+        creartestHomePage.selectFormRespuesta1("9608273");
+       /* creartestHomePage.selectFormCategoria("2");
 
         creartestHomePage.enterTextTitulo("Titulo del test");
         creartestHomePage.enterTextDescripcion("Descripcion del test");
         creartestHomePage.seleccionaCheckAceptar();
-        //assertThat(creartestHomePage.getPasteText()).containsIgnoringCase("selenium");
+        //assertThat(creartestHomePage.getPasteText()).containsIgnoringCase("selenium");*/
         //creartestHomePage.clickSubmit();
        // driver.quit(); // Cierra el navegador
     }
