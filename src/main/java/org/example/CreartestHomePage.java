@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public  class PastebinHomePage {
+public  class CreartestHomePage {
 
     private WebDriver driver;
     private WebDriverWait wait;
@@ -17,11 +17,12 @@ public  class PastebinHomePage {
     public WebElement agreeCookies;
     private WebElement textPaste;
     private WebElement textTitulo;
-
+    private WebElement textDescripcion;
     private WebElement selectExpiration;
     private WebElement submitButtonHtml;
     private WebElement selectCategoria;
-      public PastebinHomePage(WebDriver driver){
+    private WebElement checkAceptar;
+      public CreartestHomePage(WebDriver driver){
         this.driver = driver;
         // explicit wait
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(60));
@@ -29,7 +30,10 @@ public  class PastebinHomePage {
 
         agreeCookies = driver.findElement(By.xpath("//button[@aria-label=\"Consent\"]"));
         selectCategoria = driver.findElement(By.name("Categoria"));
+
         textTitulo = driver.findElement(By.name("titulo"));
+        textDescripcion = driver.findElement(By.name("descripcion_test"));
+        checkAceptar= driver.findElement(By.name("Aceptar"));
         //selectExpiration = driver.findElement(By.id("postform-expiration"));
         //submitButtonHtml = driver.findElement(By.cssSelector("#w0 > div.post-form__bottom > div.post-form__left > div.form-group.form-btn-container > button"));
     }
@@ -37,13 +41,14 @@ public  class PastebinHomePage {
     public void acceptCookies() {
         agreeCookies.click();
     }
-    public void entertextTitulo(String text) {
+    public void enterTextTitulo(String text) {
         textTitulo.sendKeys(text);
-        textTitulo.sendKeys(Keys.ENTER);
     }
-    public void enterPasteText(String text) {
-        textPaste.sendKeys(text);
-        textPaste.sendKeys(Keys.ENTER);
+    public void enterTextDescripcion(String text) {
+        textDescripcion.sendKeys(text);
+    }
+    public void seleccionaCheckAceptar() {
+        checkAceptar.click();
     }
 
     public String getPasteText() {
