@@ -1,0 +1,34 @@
+package org.example;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import java.time.Duration;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Main {
+
+    public static void main(String[] args) throws InterruptedException {
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://pastebin.com/");
+
+        PastebinHomePage pastebinHomePage = new PastebinHomePage(driver);
+
+        pastebinHomePage.acceptCookies();
+        pastebinHomePage.enterPasteText("selenium java");
+        assertThat(pastebinHomePage.getPasteText()).containsIgnoringCase("selenium");
+
+        //pastebinHomePage.selectPasteExpiration("10M"); //Si es necesario, implementa esto en el objeto de página
+
+        pastebinHomePage.clickSubmit();
+
+        // Agrega más aserciones o acciones en la siguiente página si es necesario
+        driver.quit(); // Cierra el navegador
+    }
+}
+
