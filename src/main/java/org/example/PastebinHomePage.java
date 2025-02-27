@@ -16,24 +16,31 @@ public  class PastebinHomePage {
 
     public WebElement agreeCookies;
     private WebElement textPaste;
+    private WebElement textTitulo;
+
     private WebElement selectExpiration;
     private WebElement submitButtonHtml;
-
+    private WebElement selectCategoria;
       public PastebinHomePage(WebDriver driver){
         this.driver = driver;
         // explicit wait
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(@mode, 'primary')]")));
-        agreeCookies = driver.findElement(By.xpath("//button[contains(@mode, 'primary')]"));
-        textPaste = driver.findElement(By.id("postform-text"));
-        selectExpiration = driver.findElement(By.id("postform-expiration"));
-        submitButtonHtml = driver.findElement(By.cssSelector("#w0 > div.post-form__bottom > div.post-form__left > div.form-group.form-btn-container > button"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@aria-label=\"Consent\"]")));
+
+        agreeCookies = driver.findElement(By.xpath("//button[@aria-label=\"Consent\"]"));
+        selectCategoria = driver.findElement(By.name("Categoria"));
+        textTitulo = driver.findElement(By.name("titulo"));
+        //selectExpiration = driver.findElement(By.id("postform-expiration"));
+        //submitButtonHtml = driver.findElement(By.cssSelector("#w0 > div.post-form__bottom > div.post-form__left > div.form-group.form-btn-container > button"));
     }
 
     public void acceptCookies() {
         agreeCookies.click();
     }
-
+    public void entertextTitulo(String text) {
+        textTitulo.sendKeys(text);
+        textTitulo.sendKeys(Keys.ENTER);
+    }
     public void enterPasteText(String text) {
         textPaste.sendKeys(text);
         textPaste.sendKeys(Keys.ENTER);
@@ -42,7 +49,10 @@ public  class PastebinHomePage {
     public String getPasteText() {
         return textPaste.getAttribute("value");
     }
-
+    public void selectFormCategoria(String value) {
+        Select select = new Select(selectCategoria);
+        select.selectByValue(value);
+    }
     public void selectPasteExpiration(String value) {
         Select select = new Select(selectExpiration);
         select.selectByValue(value);

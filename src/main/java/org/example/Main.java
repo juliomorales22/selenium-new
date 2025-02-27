@@ -15,13 +15,15 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver = new ChromeDriver();
-        driver.get("https://pastebin.com/");
+        driver.get("https://www.creartest.com/creartest1.php");
         PastebinHomePage pastebinHomePage = new PastebinHomePage(driver);
         pastebinHomePage.acceptCookies();
-        pastebinHomePage.enterPasteText("selenium java");
-        assertThat(pastebinHomePage.getPasteText()).containsIgnoringCase("selenium");
-        pastebinHomePage.clickSubmit();
-        driver.quit(); // Cierra el navegador
+        pastebinHomePage.selectFormCategoria("2");
+
+        pastebinHomePage.entertextTitulo("Titulo del test");
+        //assertThat(pastebinHomePage.getPasteText()).containsIgnoringCase("selenium");
+        //pastebinHomePage.clickSubmit();
+       // driver.quit(); // Cierra el navegador
     }
 }
 
